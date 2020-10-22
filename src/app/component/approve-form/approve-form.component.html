@@ -1,0 +1,193 @@
+<div class="jumbotron text-white" id="approve">
+  <div class="text-center">
+    <img src="../../../assets/images/message-in-a-bottle (2).png" alt="HTML5 Icon" style="height: 40px; width:auto;">
+  </div>
+  <br>
+  <h2 class="text-center">Approve a Transfer in USDC</h2>
+  <br>
+  <h5 class="lead text-center mb-4">Here you can approve a USDC transfer and pay pre-fixed transaction tip in USDC if transaction has done
+  </h5>
+  <br>
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <div class="row text-left">
+        <div class="col-12">
+          <div class="card mb-3 mx-4" style="max-width: auto;">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <img src="../../../assets/images/fox (2).png" alt="HTML5 Icon" style="height: 50px; width:auto;">
+                </div>
+                <div class="col-10">
+                  <h5>Connect your wallet - Metamask - to submit your pre-approved USDC transfer.</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3 mx-4" style="max-width: auto;">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <img src="../../../assets/images/letter-of-marque (1).png" alt="HTML5 Icon"
+                    style="height: 50px; width:auto;">
+                </div>
+                <div class="col-10">
+                  <h5>Setup the address of receiver, the amount of TRANSFER, the GAS TIP and the deadline.</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3 mx-4" style="max-width: auto;">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <img src="../../../assets/images/feather (2).png" alt="HTML5 Icon" style="height: 30px; width:auto;">
+                  <img class="mb-4" src="../../../assets/images/loot (3).png" alt="HTML5 Icon"
+                  style="height: 30px; width:auto;">
+                </div>
+                <div class="col-10">
+                  <h5>Verify and sign GAS TIP transfer approve message in your browser.</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3 mx-4" style="max-width: auto;">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <img src="../../../assets/images/feather (2).png" alt="HTML5 Icon" style="height: 30px; width:auto;">
+                  <img class="mb-4" src="../../../assets/images/treasure (1).png" alt="HTML5 Icon"
+                  style="height: 30px; width:auto;">
+                </div>
+                <div class="col-10">
+                  <h5>Verify and sign main TRANSFER approve message in your browser.</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3 mx-4" style="max-width: auto;">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <img src="../../../assets/images/message-in-a-bottle (2).png" alt="HTML5 Icon"
+                    style="height: 50px; width:auto;">
+                </div>
+                <div class="col-10">
+                  <h5>Your approved TRANSFER is open and if its done you will only pay de GAS TIP.</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="phase == 'preTx'" class="col-md-6" id="formApproveBox">
+      <form [formGroup]="approveForm" (ngSubmit)="confirmApprove()">
+        <div class="card border-white g-dark mb-3" style="max-width: auto;">
+          <div class="card-body text-center mx-4">
+            <img src="../../../assets/images/letter-of-marque (1).png" alt="HTML5 Icon"
+            style="height: 35px; width:auto;">
+            <br>
+            <h3 class="text-center mt-3">Send your Transfer Approve</h3>
+            <br>
+            <div class="form-group mb-3">
+              <label class="form-label text-left">Ethereum Address to Receive USDC</label>
+              <input type="text" class="form-control bg-white" id="recipientAddress" name="recipientAddress"
+                formControlName="recipientAddress">
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label text-left">Value of main TRANSFER (to receiver)</label>
+              <div class="input-group">
+                <input type="number" class="form-control bg-white" id="valueApprove" name="valueApprove"
+                  formControlName="valueApprove">
+                <div class="input-group-prepend">
+                  <span class="input-group-text text-white bg-info">USDC</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-3 mt-3">
+              <label class="form-label text-left">Value of GAS TIP (to caller)</label>
+              <div class="input-group">
+                <input type="number" class="form-control bg-white" id="gasFee" name="gasFee" formControlName="gasFee">
+                <div class="input-group-prepend">
+                  <span class="input-group-text text-white bg-info">USDC</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-3 mt-3">
+              <label class="form-label text-left">Deadline of Approve</label>
+              <div class="input-group">
+                <input type="number" class="form-control bg-white" id="deadline" name="deadline"
+                  formControlName="deadline">
+                <div class="input-group-prepend">
+                  <span class="input-group-text text-white bg-info">HOURS</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-lg btn-info mt-2 mb-2" type="submit">Submit My Approve</button>
+            <p>No ETH gas fee required</p>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="phase == 'unconnected'" class="col-md-6" id="connectMetamaskBox">
+      <div class="card border-white g-dark mb-3" style="max-width: auto;">
+        <div style=" margin-top: 140px; margin-bottom: 140px; align-content: center">
+          <div class="card-body text-center mx-4">
+            <img class="mb-4" src="../../../assets/images/fox (1).png" alt="HTML5 Icon"
+              style="height: 100px; width:auto;">
+            <br>
+            <h3 class="text-center">Connect your browser wallet to sign messages</h3>
+            <br>
+            <button class="btn btn-lg btn-danger" (click)="connectMetamask()">Connect Wallet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="phase == 'approveGasFee'" class="col-md-6" id="connectMetamaskBox">
+      <div class="card border-white g-dark mb-3" style="max-width: auto;">
+        <div style=" margin-top: 140px; margin-bottom: 140px; align-content: center">
+          <div class="card-body text-center mx-4">
+            <img class="mb-4" src="../../../assets/images/feather (2).png" alt="HTML5 Icon"
+            style="height: 100px; width:auto;">
+            <img class="mb-4" src="../../../assets/images/loot (3).png" alt="HTML5 Icon"
+              style="height: 100px; width:auto;">
+            <br>
+            <h3 class="text-center">Sign the Approve of GAS TIP on your browser wallet</h3>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="phase == 'approveTx'" class="col-md-6" id="connectMetamaskBox">
+      <div class="card border-white g-dark mb-3" style="max-width: auto;">
+        <div style=" margin-top: 140px; margin-bottom: 140px; align-content: center">
+          <div class="card-body text-center mx-4">
+            <img class="mb-4" src="../../../assets/images/feather (2).png" alt="HTML5 Icon"
+            style="height: 100px; width:auto;">
+            <img class="mb-4" src="../../../assets/images/treasure (1).png" alt="HTML5 Icon"
+              style="height: 100px; width:auto;">
+            <br>
+            <h3 class="text-center">Sign the Approve of TX on your browser wallet</h3>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="phase == 'congratulations'" class="col-md-6" id="connectMetamaskBox">
+      <div class="card border-white g-dark mb-3" style="max-width: auto;">
+        <div style=" margin-top: 140px; margin-bottom: 100px; align-content: center">
+          <div class="card-body text-center mx-4">
+            <img class="mb-4" src="../../../assets/images/island.png" alt="HTML5 Icon"
+              style="height: 100px; width:auto;">
+            <br>
+            <h4 class="text-center">Congratulations, your approved was submitted and can be called until the deadline.</h4>
+            <br>
+            <a class="btn btn-success" href="#sendList">See Approves</a>
+            <a class="btn btn-info" (click)="newApprove()">New Approve</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
