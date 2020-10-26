@@ -3,6 +3,7 @@ import { } from 'eth-sig-util';
 //import Web3 from 'web3';
 
 var Web3: any = window["Web3"];
+
 const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/1f021062dff24524804b80eb903f3976"));
 let tidesAbi = require('../abi/tides.json');
 var contract = new web3.eth.Contract(tidesAbi.abi, "0xAf2d007537e5a7eeBad315c26c0B6801fE566494");
